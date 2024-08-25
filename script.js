@@ -8,9 +8,17 @@ const weatherCondition = document.getElementById('weather-condition');
 const precipitation = document.getElementById('precipitation');
 const cloudCover = document.getElementById('cloud-cover');
 const weatherIcon = document.getElementById('weather-icon');
+const backButton = document.getElementById('back-button');
+const forecastContainer = document.getElementById('forecast-container');
+const forecastSlider = document.getElementById('forecast-slider');
+const prevHourButton = document.getElementById('prev-hour');
+const nextHourButton = document.getElementById('next-hour');
+
+let hourlyData = [];
+let currentIndex = 0;
 
 async function getWeatherData(location) {
-    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&hours=24`;
 
     try {
         const response = await fetch(url);
@@ -21,6 +29,8 @@ async function getWeatherData(location) {
 
         if (data.error) {
             weatherInfo.textContent = `Error: ${data.error.message}`;
+            forecastContainer.style.display = 'none'; // Hide the forecast box on error
+            backButton.style.display = 'none'; // Hide the back button on error
         } else {
             const city = data.location.name;
             const temperatureValue = data.current.temp_c;
@@ -29,15 +39,13 @@ async function getWeatherData(location) {
             const precip = data.current.precip_mm;
             const cloud = data.current.cloud;
 
-            // Get current local time at the searched location
-            const localTime = data.location.localtime;
+            // Get hourly forecast data
+            hourlyData = data.forecast.forecastday[0].hour;
+            currentIndex = 0; // Reset index
 
-            // Format the local time using toLocaleTimeString
-            const formattedTime = new Date(localTime).toLocaleTimeString('en-US', { hour12: true });
-
-            // Display current weather
+            // Update weather info
             weatherInfo.innerHTML = `
-                <h3>${formattedTime} - ${city} (${data.location.country})</h3>
+                <h3>${city} (${data.location.country})</h3>
                 <img id="weather-icon" src="${weatherIconUrl}" alt="${weatherConditionValue}">
                 <p id="temperature">Temperature: ${temperatureValue}°C</p>
                 <p id="weather-condition">Weather: ${weatherConditionValue}</p>
@@ -45,14 +53,51 @@ async function getWeatherData(location) {
                 <p id="cloud-cover">Cloud Cover: ${cloud}%</p>
             `;
 
-            // Make weather icon visible
-            weatherIcon.style.visibility = 'visible';
+            // Display hourly forecast
+            displayHourlyForecast();
+            forecastContainer.style.display = 'block'; // Show forecast box
+            backButton.style.display = 'block'; // Show back button
         }
     } catch (error) {
         console.error(error);
         weatherInfo.textContent = 'Error fetching weather data.';
+        forecastContainer.style.display = 'none'; // Hide the forecast box on error
+        backButton.style.display = 'none'; // Hide the back button on error
     }
 }
+
+function displayHourlyForecast() {
+    forecastSlider.innerHTML = '';
+    const numberOfHours = hourlyData.length;
+    const itemsToShow = 6;
+
+    for (let i = currentIndex; i < Math.min(currentIndex + itemsToShow, numberOfHours); i++) {
+        const hourData = hourlyData[i];
+        const forecastElement = document.createElement('div');
+        forecastElement.classList.add('forecast-hour');
+        forecastElement.innerHTML = `
+            <p>${hourData.time.split(' ')[1]}</p>
+            <img src="${hourData.condition.icon}" alt="${hourData.condition.text}">
+            <p>${hourData.temp_c}°C</p>
+            <p>${hourData.condition.text}</p>
+        `;
+        forecastSlider.appendChild(forecastElement);
+    }
+}
+
+prevHourButton.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex -= 6;
+        displayHourlyForecast();
+    }
+});
+
+nextHourButton.addEventListener('click', () => {
+    if (currentIndex + 6 < hourlyData.length) {
+        currentIndex += 6;
+        displayHourlyForecast();
+    }
+});
 
 searchButton.addEventListener('click', () => {
     const searchTerm = searchInput.value.trim();
@@ -63,4 +108,19 @@ searchButton.addEventListener('click', () => {
     }
 
     getWeatherData(searchTerm);
+});
+
+backButton.addEventListener('click', () => {
+    searchInput.value = '';
+    weatherInfo.innerHTML = `
+        <h2>Get the weather details of any city, Right Now!</h2>
+        <img id="weather-icon" src="" alt="Weather Icon" style="visibility: hidden;">
+        <p id="temperature">Temperature: -°C</p>
+        <p id="weather-condition">Current Weather: </p>
+        <p id="precipitation">Chance of Precipitation: -%</p>
+        <p id="cloud-cover">Cloud Cover: -%</p>
+    `;
+    forecastSlider.innerHTML = ''; // Clear forecast data
+    forecastContainer.style.display = 'none'; // Hide the forecast box
+    backButton.style.display = 'none'; // Hide the back button
 });

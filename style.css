@@ -85,3 +85,111 @@ h1 {
     margin: 10px auto;
 }
 
+#forecast-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #000;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+#forecast-slider {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    gap: 10px;
+    flex: 1;
+    justify-content: center; /* Center the forecast items */
+}
+
+.forecast-hour {
+    display: inline-block;
+    width: 150px; /* Fixed width for forecast items */
+    box-sizing: border-box;
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.8em;
+    height: 120px; /* Adjusted height */
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-hour img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.forecast-hour p {
+    margin: 2px 0;
+}
+
+.arrow-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+#prev-hour {
+    left: 0;
+}
+
+#next-hour {
+    right: 0;
+}
+
+.arrow-button:hover {
+    background-color: #0062cc;
+}
+
+.arrow-button:focus {
+    outline: none;
+}
+
+#back-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    display: none;
+    position: below;
+    bottom: 10px;
+    left: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#back-button:hover {
+    background-color: #218838;
+}
+
+#back-button:active {
+    background-color: #1e7e34;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#back-button:focus {
+    outline: none;
+}

@@ -29,6 +29,15 @@
         <p id="precipitation">Chance of Precipitation: -%</p>
         <p id="cloud-cover">Cloud Cover: -%</p>
       </div>
+      <div id="forecast-container" style="display: none;">
+        <button id="prev-hour" class="arrow-button">←</button>
+        <div id="forecast-slider">
+          <!-- Forecast hours will be dynamically added here -->
+        </div>
+        <button id="next-hour" class="arrow-button">→</button>
+      </div>
+      <button id="back-button" onclick="goBack()" style="display: none;">← Back</button>
+      <div id="weather-widget-container"></div> <!-- Widget Container -->
     </main>
   </div>
   <script src="script.js"></script>
