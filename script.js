@@ -42,10 +42,17 @@ async function getWeatherData(location) {
             // Get hourly forecast data
             hourlyData = data.forecast.forecastday[0].hour;
             currentIndex = 0; // Reset index
+            
+            // Get current local time at the searched location
+            const localTime = data.location.localtime;
+
+            // Format the local time using toLocaleTimeString
+            const formattedTime = new Date(localTime).toLocaleTimeString('en-US', { hour24: true });
+
 
             // Update weather info
             weatherInfo.innerHTML = `
-                <h3>${city} (${data.location.country})</h3>
+                <h3>${formattedTime} - ${city} (${data.location.country})</h3>
                 <img id="weather-icon" src="${weatherIconUrl}" alt="${weatherConditionValue}">
                 <p id="temperature">Temperature: ${temperatureValue}°C</p>
                 <p id="weather-condition">Weather: ${weatherConditionValue}</p>
