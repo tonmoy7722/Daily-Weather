@@ -43,3 +43,27 @@ To run this application locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/tonmoy7722/Daily-Weather.git
+2. Open the `index.html` file in your browser to view the application locally.
+
+## Usage
+
+To use the Daily Weather Web App:
+
+1. Open the web application.
+2. Enter the name of a city or location in the search bar.
+3. Click the **Search** button to retrieve and display weather data.
+4. Use the arrows in the 24-hour forecast section to navigate through the hourly forecast.
+5. If you're done viewing the forecast, click the **Back** button to return to the search interface.
+
+## Screenshots
+
+![Screenshot 1](https://your-image-link-here.com/screenshot1.png)
+![Screenshot 2](https://your-image-link-here.com/screenshot2.png)
+
+
+## Contact
+
+**Tonmoy Day Sarkar**
+
+- GitHub: [@Tonmoy7722](https://github.com/Tonmoy7722)
+- Email: [Your Email](mailto:tonmoysarkar7722@gmail.com)
