@@ -1,27 +1,57 @@
+/* Base styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     height: 100vh;
     overflow: hidden;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    position: relative;
 }
 
-#background-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+.cloud {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 100px;
+    opacity: 0.8;
     z-index: 1;
+}
+
+.cloud1 {
+    background-image: url('images/cloud1.png');
+    top: 10%;
+    left: -200px;
+    animation: cloudAnimation1 60s linear infinite;
+}
+
+.cloud2 {
+    background-image: url('images/cloud2.png');
+    top: 40%;
+    left: -250px;
+    animation: cloudAnimation2 80s linear infinite;
+}
+
+.cloud3 {
+    background-image: url('images/cloud3.png');
+    top: 70%;
+    left: -300px;
+    animation: cloudAnimation3 100s linear infinite;
+}
+
+@keyframes cloudAnimation1 {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-200px); }
+}
+
+@keyframes cloudAnimation2 {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-250px); }
+}
+
+@keyframes cloudAnimation3 {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-300px); }
 }
 
 .container {
@@ -102,24 +132,20 @@ h1 {
 }
 
 #forecast-slider {
-    display: flex;
-    overflow: hidden;
-    white-space: nowrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Default: 6 items per row */
     gap: 10px;
-    flex: 1;
-    justify-content: center; /* Center the forecast items */
+    width: 100%;
+    box-sizing: border-box;
+    transition: grid-template-columns 0.3s ease-in-out;
 }
 
 .forecast-hour {
-    display: inline-block;
-    width: 150px; /* Fixed width for forecast items */
-    box-sizing: border-box;
-    padding: 5px;
     background: #fff;
     border-radius: 5px;
     text-align: center;
     font-size: 0.8em;
-    height: 120px; /* Adjusted height */
+    height: 120px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -174,9 +200,10 @@ h1 {
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     display: none;
-    position: below;
-    bottom: 10px;
-    left: 10px;
+    position: absolute;
+    bottom: -25px; /* Position directly below the forecast container */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -192,4 +219,76 @@ h1 {
 
 #back-button:focus {
     outline: none;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    #forecast-slider {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .forecast-hour {
+        width: 100%;
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 992px) {
+    #forecast-slider {
+        grid-template-columns: repeat(5, 1fr); /* 5 items per row */
+    }
+
+    .forecast-hour {
+        width: 100%;
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 768px) {
+    #forecast-slider {
+        grid-template-columns: repeat(3, 1fr); /* 4 items per row */
+    }
+
+    .forecast-hour {
+        width: 100%;
+        font-size: 0.5em;
+    }
+
+    #forecast-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .arrow-button {
+        padding: 6px;
+        z-index: 3;
+    }
+
+    #prev-hour, #next-hour {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    #forecast-slider {
+        grid-template-columns: repeat(3, 1fr); /* 4 items per row */
+    }
+
+    .forecast-hour {
+        width: 100%;
+        font-size: 0.4em;
+    }
+
+    #forecast-container {
+        padding: 5px;
+    }
+
+    .arrow-button {
+        padding: 4px;
+    }
+
+    #prev-hour, #next-hour {
+        display: block;
+    }
 }

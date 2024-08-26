@@ -47,8 +47,7 @@ async function getWeatherData(location) {
             const localTime = data.location.localtime;
 
             // Format the local time using toLocaleTimeString
-            const formattedTime = new Date(localTime).toLocaleTimeString('en-US', { hour24: true });
-
+            const formattedTime = new Date(localTime).toLocaleTimeString('en-US', { hour12: true });
 
             // Update weather info
             weatherInfo.innerHTML = `
