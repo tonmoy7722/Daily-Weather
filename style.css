@@ -247,7 +247,10 @@ h1 {
 
 @media (max-width: 767px) {
     #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 3 items per row for mobile devices */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+        grid-template-rows: repeat(2, auto);   /* 2 rows, automatically sized */
+        gap: 10px;
     }
 
     .forecast-hour {
@@ -256,8 +259,6 @@ h1 {
     }
 
     #forecast-container {
-        flex-direction: column;
-        align-items: center;
         padding: 5px;
     }
 
@@ -273,7 +274,10 @@ h1 {
 
 @media (max-width: 576px) {
     #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 3 items per row for very small screens */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+        grid-template-rows: repeat(2, auto);   /* 2 rows, automatically sized */
+        gap: 10px;
     }
 
     .forecast-hour {
