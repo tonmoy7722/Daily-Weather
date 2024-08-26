@@ -246,7 +246,7 @@ h1 {
 
 @media (max-width: 768px) {
     #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 4 items per row */
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     }
 
     .forecast-hour {
@@ -272,7 +272,7 @@ h1 {
 
 @media (max-width: 576px) {
     #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 4 items per row */
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     }
 
     .forecast-hour {
