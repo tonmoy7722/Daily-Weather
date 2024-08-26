@@ -248,8 +248,8 @@ h1 {
 @media (max-width: 767px) {
     #forecast-slider {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-        grid-template-rows: repeat(2, auto);   /* 2 rows, automatically sized */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-rows: repeat(2, auto);   /* 2 rows */
         gap: 10px;
     }
 
@@ -275,8 +275,8 @@ h1 {
 @media (max-width: 576px) {
     #forecast-slider {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 2 items per row */
-        grid-template-rows: repeat(2, auto);   /* 2 rows, automatically sized */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-rows: repeat(2, auto);   /* 2 rows */
         gap: 10px;
     }
 
