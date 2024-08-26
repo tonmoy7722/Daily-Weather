@@ -57,13 +57,13 @@ To use the Daily Weather Web App:
 
 ## Screenshots
 
-![Screenshot 1](https://your-image-link-here.com/screenshot1.png)
-![Screenshot 2](https://your-image-link-here.com/screenshot2.png)
+![Screenshot 1](https://github.com/tonmoy7722/Daily-Weather/blob/main/images/Screenshot1.png)
+![Screenshot 2](https://github.com/tonmoy7722/Daily-Weather/blob/main/images/Screenshot2.png)
 
 
 ## Contact
 
 **Tonmoy Day Sarkar**
 
-- GitHub: [@Tonmoy7722](https://github.com/Tonmoy7722)
+- GitHub: [@Tonmoy7722](https://github.com/tonmoy7722)
 - Email: [Your Email](mailto:tonmoysarkar7722@gmail.com)
