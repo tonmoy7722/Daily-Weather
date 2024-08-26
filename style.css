@@ -235,7 +235,7 @@ h1 {
 
 @media (max-width: 992px) {
     #forecast-slider {
-        grid-template-columns: repeat(5, 1fr); /* 5 items per row */
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     }
 
     .forecast-hour {
