@@ -242,6 +242,20 @@ h1 {
         width: 100%;
         font-size: 0.6em;
     }
+    #forecast-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .arrow-button {
+        padding: 6px;
+        z-index: 3;
+    }
+
+    #prev-hour, #next-hour {
+        display: block;
+    }
 }
 
 @media (max-width: 768px) {
