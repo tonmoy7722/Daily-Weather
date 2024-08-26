@@ -222,9 +222,21 @@ h1 {
 }
 
 /* Responsive styles */
-@media (max-width: 1200px) {
+/* Responsive styles */
+@media (min-width: 1024px) {
     #forecast-slider {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(6, 1fr); /* Default: 6 items per row */
+    }
+
+    .forecast-hour {
+        width: 100%;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    #forecast-slider {
+        grid-template-columns: repeat(5, 1fr); /* 5 items per row for tablets */
     }
 
     .forecast-hour {
@@ -233,39 +245,14 @@ h1 {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 767px) {
     #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row for mobile devices */
     }
 
     .forecast-hour {
         width: 100%;
         font-size: 0.6em;
-    }
-    #forecast-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 5px;
-    }
-
-    .arrow-button {
-        padding: 6px;
-        z-index: 3;
-    }
-
-    #prev-hour, #next-hour {
-        display: block;
-    }
-}
-
-@media (max-width: 768px) {
-    #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    }
-
-    .forecast-hour {
-        width: 100%;
-        font-size: 0.5em;
     }
 
     #forecast-container {
@@ -286,12 +273,12 @@ h1 {
 
 @media (max-width: 576px) {
     #forecast-slider {
-        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row for very small screens */
     }
 
     .forecast-hour {
         width: 100%;
-        font-size: 0.4em;
+        font-size: 0.5em;
     }
 
     #forecast-container {
@@ -306,3 +293,4 @@ h1 {
         display: block;
     }
 }
+
