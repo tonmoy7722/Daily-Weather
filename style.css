@@ -275,7 +275,7 @@ h1 {
 @media (max-width: 576px) {
     #forecast-slider {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+        grid-template-columns: repeat(3, 1fr); /* 2 items per row */
         grid-template-rows: repeat(2, auto);   /* 2 rows, automatically sized */
         gap: 10px;
     }
